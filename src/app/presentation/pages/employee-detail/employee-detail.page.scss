@@ -1,0 +1,44 @@
+// Dark Mode Overrides
+:host-context(.ion-palette-dark) {
+  ion-header {
+    ion-toolbar {
+      --background: #04070d;
+      --color: white;
+      --border-width: 0;
+    }
+  }
+
+  ion-content {
+    --background: #04070d;
+  }
+
+  ion-list {
+    background: transparent !important;
+    ion-item {
+      --background: transparent;
+      --color: white;
+      --border-color: rgba(255, 255, 255, 0.1);
+      
+      ion-label {
+        color: #8c8c8c !important;
+      }
+  
+      ion-input {
+        --color: white;
+        --placeholder-color: #505050;
+      }
+    }
+  }
+
+  .save-btn {
+    --background: white;
+    --color: #04070d;
+  }
+}
+
+// Common styles (Layout only)
+.save-btn {
+  --border-radius: 8px;
+  margin-top: 20px;
+  font-weight: bold;
+}

@@ -1,0 +1,48 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ isNew ? 'Nuevo Empleado' : 'Editar Empleado' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="employeeForm" (ngSubmit)="saveUser()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Nombre Completo</ion-label>
+        <ion-input formControlName="fullName" type="text" placeholder="Juan Perez"></ion-input>
+      </ion-item>
+      <ion-note slot="error"
+        *ngIf="employeeForm.get('fullName')?.touched && employeeForm.get('fullName')?.hasError('required')">Requerido</ion-note>
+
+      <ion-item>
+        <ion-label position="stacked">Cargo</ion-label>
+        <ion-input formControlName="position" type="text" placeholder="Desarrollador"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Departamento</ion-label>
+        <ion-input formControlName="department" type="text" placeholder="IT"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Salario</ion-label>
+        <ion-input formControlName="salary" type="text" (ionInput)="formatSalary($event)"
+          placeholder="5.000.000"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Contratación</ion-label>
+        <ion-input formControlName="hireDate" type="date"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button class="save-btn" expand="block" type="submit" [disabled]="!employeeForm.valid">Guardar</ion-button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,68 @@
+// Default (Light Mode) defaults will apply (White background, black text)
+
+// Dark Mode Overrides
+:host-context(.ion-palette-dark) {
+  ion-content {
+    --background: #04070d;
+  }
+
+  ion-toolbar {
+    --background: #04070d;
+    --color: white;
+  }
+
+  ion-searchbar {
+    --background: #1e1e1e; /* Slightly lighter for contrast */
+    --color: white;
+    --icon-color: white;
+    --placeholder-color: #a0a0a0;
+  }
+
+  ion-list {
+    background: transparent !important;
+  }
+
+  ion-item {
+    --background: transparent !important;
+    --color: white;
+    --border-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  ion-fab-button {
+    --background: #3880ff;
+    --color: white;
+  }
+}
+
+// Light Mode Defaults (implicit or explicit adjustments)
+ion-fab-button {
+  --color: white;
+  ion-icon {
+    color: white;
+  }
+}
+
+ion-list {
+  padding-bottom: 80px; 
+}
+
+ion-item {
+  margin-bottom: 5px;
+  border-radius: 8px;
+}
+
+ion-item-sliding {
+  margin-bottom: 2px;
+}
+
+.swipe-indicator {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  opacity: 0.5;
+  color: var(--ion-color-medium, #92949c);
+  
+  ion-icon {
+    font-size: 1.2rem;
+  }
+}

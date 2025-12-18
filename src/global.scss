@@ -32,6 +32,32 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+/* @import "@ionic/angular/css/palettes/dark.system.css"; */
+
+/* Manual overrides for Alert in Dark Mode */
+.ion-palette-dark {
+  ion-alert {
+    --background: #1e1e1e !important;
+    --color: #ffffff !important;
+
+    /* Optional text tweaking */
+    .alert-head,
+    .alert-title,
+    .alert-sub-title,
+    .alert-message {
+      color: #ffffff !important;
+    }
+  }
+}
+
+/* Fix Date Picker Icon Colors using Color Scheme */
+/* Light Mode (Default) - Request Light System Controls (Black Icon) */
+input[type="date"] {
+  color-scheme: light;
+}
+
+/* Dark Mode - Request Dark System Controls (White Icon) */
+.ion-palette-dark input[type="date"] {
+  color-scheme: dark;
+}

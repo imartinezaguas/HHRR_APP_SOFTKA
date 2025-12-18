@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Empleados</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleTheme()">
+        <ion-icon [name]="isDarkMode ? 'moon' : 'sunny'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar placeholder="Buscar empleado..." debounce="400" [value]="searchTerm" (ionInput)="onSearch($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Skeleton Loading -->
+  <ion-list *ngIf="isLoading">
+    <ion-item *ngFor="let item of [1,1,1,1,1,1]">
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animated style="border-radius: 50%"></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h2>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="!isLoading">
+    <ion-item-sliding *ngFor="let emp of employees">
+
+      <ion-item lines="full" (click)="openDetail(emp.id)">
+        <ion-label>
+          <h2>{{ emp.fullName }}</h2>
+
+          <p>
+            {{ emp.position }} · {{ emp.department }}
+          </p>
+
+          <p>
+            <ion-icon name="calendar-outline"></ion-icon>
+            {{ emp.hireDate | date:'dd/MM/yyyy' }}
+          </p>
+
+          <p>
+            <strong>
+              {{ emp.salary | currency:'COP':'symbol-narrow':'1.0-0' }}
+            </strong>
+          </p>
+        </ion-label>
+        <div slot="end" class="swipe-indicator">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </div>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteEmployee(emp.id)">
+          Eliminar
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando empleados...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openDetail()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
