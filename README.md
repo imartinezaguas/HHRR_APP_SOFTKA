@@ -83,13 +83,15 @@ Sigue estos pasos para correr el proyecto localmente:
     npm install
     ```
 
-3.  **Ejecutar servidor de desarrollo**
+3. Configura el enviroment.ts con el puerto del API
+
+4.  **Ejecutar servidor de desarrollo**
     ```bash
     ionic serve
     ```
     Visita `http://localhost:8100/` en tu navegador.
 
-4.  **Ejecutar Pruebas Unitarias**
+5.  **Ejecutar Pruebas Unitarias**
     Para verificar la calidad del código:
     ```bash
     npm test
